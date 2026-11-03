@@ -7,6 +7,40 @@ import { cn } from "@/lib/utils";
 // Bausteine mit Zustand liegen in eigenen Dateien ("use client") und werden hier mit ausgegeben.
 export { PageHeader } from "./page-header";
 export { Segmented } from "./segmented";
+export { Dialog } from "./dialog";
+export { RueckmeldungsBereich, zeigeRueckmeldung } from "./toast";
+
+// Datensatz-Liste: am Rechner Zeilen in einer Fläche, durch Linien getrennt; am Handy dieselben Datensätze als kompakte Karten.
+export function Liste({ children, label }: { children: React.ReactNode; label?: string }) {
+  return (
+    <ul aria-label={label} className="flex flex-col gap-2 sm:gap-0 sm:overflow-hidden sm:rounded-card sm:bg-surface sm:shadow-card">
+      {children}
+    </ul>
+  );
+}
+
+export function Zeile({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <li
+      className={cn(
+        "flex flex-col gap-2 rounded-card bg-surface p-4 shadow-card sm:flex-row sm:items-center sm:gap-4 sm:rounded-none sm:px-(--pad-card) sm:py-3 sm:shadow-none sm:not-last:border-b sm:not-last:border-line",
+        className,
+      )}
+    >
+      {children}
+    </li>
+  );
+}
+
+// Angabe in einer Detailansicht: kleine Beschriftung, Wert darunter.
+export function Angabe({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="flex min-w-0 flex-col gap-0.5">
+      <dt className="text-small text-muted">{label}</dt>
+      <dd className="font-medium">{children}</dd>
+    </div>
+  );
+}
 
 // Knöpfe: genau ein „primary“ je Ansicht. Icon links vom Text.
 const KNOPF = {
@@ -143,14 +177,14 @@ export function Field({ label, hinweis, fehler, optional, children }: { label: s
   );
 }
 
-export function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
+export function Input(props: React.ComponentProps<"input">) {
   return <input {...props} className={cn(feldKlasse, "h-(--ctl-h)", props.className)} />;
 }
 
-export function Textarea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
+export function Textarea(props: React.ComponentProps<"textarea">) {
   return <textarea {...props} className={cn(feldKlasse, "min-h-24 py-2.5", props.className)} />;
 }
 
-export function Select(props: React.SelectHTMLAttributes<HTMLSelectElement>) {
+export function Select(props: React.ComponentProps<"select">) {
   return <select {...props} className={cn(feldKlasse, "h-(--ctl-h)", props.className)} />;
 }

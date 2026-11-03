@@ -121,6 +121,10 @@ Fließtext höchstens 65–72 Zeichen breit. Überschriften mit `text-wrap: bala
 | `Hinweis` | Info, Warnung, Fehler im Inhalt: Titel sagt was, Text sagt, was zu tun ist |
 | `Field` + `Input` / `Textarea` / `Select` | Beschriftung **über** dem Feld, Hinweis darunter, Fehler ersetzt den Hinweis; nie nur Platzhalter |
 | `Segmented` | Umschalter für andere Darstellung oder kurze Auswahl, höchstens 5 Segmente |
+| `Liste` + `Zeile` | Datensätze: am Rechner Zeilen in einer Fläche mit Trennlinien, am Handy dieselben Datensätze als kompakte Karten |
+| `Angabe` | Beschriftung und Wert in Detailansichten, innerhalb eines `<dl>` |
+| `Dialog` | Formular im Dialog (520 px), am Handy Fenster von unten; `Esc`, Klick daneben und sichtbarer Schließen-Knopf (44 px) schließen |
+| `zeigeRueckmeldung(text, rueckgaengig?)` | Rückmeldung unten mittig (am Handy über der Leiste), bestätigt die Aktion, optional „Rückgängig“; verschwindet nach 6 s, `aria-live`. Der `RueckmeldungsBereich` steckt schon im Rahmen |
 
 Jeder Baustein hat die Zustände Ruhe, Hover, Fokus (Ring immer sichtbar), Gedrückt und Gesperrt. Gesperrt sparsam: lieber klickbar lassen und erklären, was fehlt.
 

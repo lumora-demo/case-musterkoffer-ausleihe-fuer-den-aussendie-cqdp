@@ -1,0 +1,331 @@
+@import "tailwindcss";
+
+/* Lumora Design-System: Tokens. Kernfarbe Salbeigrün. Gilt für jede App der Lumora Systeme AG.
+   Komponenten nutzen nur diese Tokens, nie feste Farbwerte. Regeln: STYLEGUIDE.md. */
+:root {
+  /* Flächen */
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --surface-2: #fafafb;
+  --fill: rgba(118, 118, 128, 0.1);
+  --fill-2: rgba(118, 118, 128, 0.18);
+  --line: rgba(60, 60, 67, 0.12);
+  --line-2: rgba(60, 60, 67, 0.22);
+  /* Text */
+  --text: #1d1d1f;
+  --text-2: #48484c;
+  --muted: #6e6e73;
+  /* Kernfarbe Salbeigrün */
+  --accent: #427e70;
+  --accent-hover: #346559;
+  --accent-soft: rgba(66, 126, 112, 0.11);
+  --on-accent: #ffffff;
+  --ring: rgba(66, 126, 112, 0.34);
+  /* Tool-Kachel */
+  --tile: #1d1d1f;
+  --tile-text: #ffffff;
+  --tile-sub: #c4c4c8;
+  /* Status */
+  --warn: #a35f00;
+  --warn-soft: rgba(199, 119, 0, 0.12);
+  --danger: #c62f2f;
+  --danger-soft: rgba(198, 47, 47, 0.1);
+  --ok: #2b7a3d;
+  --ok-soft: rgba(43, 122, 61, 0.11);
+  /* Projektfarben */
+  --cat-1: #0e7490;
+  --cat-2: #b4531a;
+  --cat-3: #8e44ad;
+  --cat-4: #5e7d1a;
+  /* Tiefe */
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 0.5px rgba(0, 0, 0, 0.05);
+  --shadow-2: 0 6px 20px rgba(0, 0, 0, 0.08), 0 0 0 0.5px rgba(0, 0, 0, 0.05);
+  --shadow-3: 0 24px 60px rgba(0, 0, 0, 0.18), 0 0 0 0.5px rgba(0, 0, 0, 0.06);
+  --scrim: rgba(20, 20, 22, 0.32);
+  --scrim-strong: rgba(20, 20, 22, 0.62);
+
+  /* Schriftgrößen */
+  --fs-display: clamp(36px, 5vw, 54px);
+  --fs-h1: 30px;
+  --fs-h2: 22px;
+  --fs-h3: 17px;
+  --fs-body: 15px;
+  --fs-control: 14px;
+  --fs-small: 13px;
+  --fs-caption: 12px;
+  /* Formen und Höhen */
+  --r-btn: 10px;
+  --r-control: 10px;
+  --r-card: 16px;
+  --r-tile: 18px;
+  --r-pop: 14px;
+  --ctl-h: 40px;
+  --ctl-h-s: 32px;
+  --ctl-h-l: 48px;
+  --pad-card: 20px;
+  --gap: 16px;
+  /* Bewegung */
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 320ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Einblenden beim Scrollen */
+  --dur-reveal: 560ms;
+  --stagger: 70ms;
+  --stagger-fast: 40ms;
+  --reveal-shift: 12px;
+}
+
+/* Dunkler Modus: vorbereitet, noch nicht eingeschaltet. Aktiv nur mit <html data-theme="dark">. */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #101012;
+  --surface: #1b1b1e;
+  --surface-2: #222225;
+  --fill: rgba(150, 150, 160, 0.14);
+  --fill-2: rgba(150, 150, 160, 0.22);
+  --line: rgba(255, 255, 255, 0.09);
+  --line-2: rgba(255, 255, 255, 0.17);
+  --text: #f2f2f4;
+  --text-2: #c2c2c8;
+  --muted: #97979e;
+  --accent: #7fc2b0;
+  --accent-hover: #9ad2c3;
+  --accent-soft: rgba(127, 194, 176, 0.16);
+  --on-accent: #0d2a23;
+  --ring: rgba(127, 194, 176, 0.45);
+  --tile: #2a2a2e;
+  --tile-sub: #b4b4ba;
+  --warn: #e3a44a;
+  --warn-soft: rgba(227, 164, 74, 0.15);
+  --danger: #f27a7a;
+  --danger-soft: rgba(242, 122, 122, 0.14);
+  --ok: #62c482;
+  --ok-soft: rgba(98, 196, 130, 0.14);
+  --cat-1: #4cb8cc;
+  --cat-2: #e59060;
+  --cat-3: #c48fe4;
+  --cat-4: #a3c25a;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 0 0.5px rgba(255, 255, 255, 0.07);
+  --shadow-2: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+  --shadow-3: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 0 0.5px rgba(255, 255, 255, 0.1);
+  --scrim: rgba(0, 0, 0, 0.55);
+  --scrim-strong: rgba(0, 0, 0, 0.72);
+}
+
+/* Apps: Linien statt Schatten, dichter. Steht am Rahmen der App (class="ui-dense" am body). */
+.ui-dense {
+  --shadow-1: 0 0 0 1px var(--line);
+  --r-btn: 8px;
+  --r-control: 8px;
+  --r-card: 12px;
+  --r-pop: 12px;
+  --ctl-h: 36px;
+  --ctl-h-s: 28px;
+  --ctl-h-l: 44px;
+  --fs-body: 14px;
+  --fs-control: 13px;
+  --fs-small: 12px;
+  --fs-caption: 11px;
+  --fs-h3: 15px;
+  --pad-card: 16px;
+  --gap: 12px;
+}
+
+/* Am Handy (unter 640 px): Lesegröße statt der dichten Rechner-Schrift
+   */
+@media (max-width: 639px) {
+  .ui-dense {
+    --fs-body: 16px;
+    --fs-control: 16px;
+    --fs-small: 14px;
+    --fs-caption: 12px;
+    --fs-h3: 17px;
+    --ctl-h-s: 34px;
+    --pad-card: 16px;
+  }
+}
+
+/* Höhe der Kopfzeile am Handy (app-shell.tsx): darunter bleiben mitlaufende Reiter stehen. */
+:root {
+  --mobile-bar-h: calc(max(10px, env(safe-area-inset-top)) + 54px);
+}
+
+/* Touch-Geräte: Klickflächen mindestens 44 px. */
+@media (pointer: coarse) {
+  :root,
+  .ui-dense {
+    --ctl-h: 44px;
+  }
+}
+
+/* Kleine Knöpfe (28–32 px) auf Touch-Geräten: unsichtbar vergrößerte Klickfläche auf mindestens 44 × 44 px
+   ohne das Aussehen zu ändern. Das Element braucht eine Position
+   (relative/absolute; Button hat sie schon). */
+@utility touch-target {
+  @media (pointer: coarse) {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: max(100%, 44px);
+      height: max(100%, 44px);
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+/* Rahmen der App (data-app-shell): fühlt sich an wie eine App. Kein Nachfedern am Rand
+   und kein „Ziehen zum Aktualisieren“, kein grauer Tipp-Schatten, kein Doppeltipp-Zoom (Zoomen mit zwei Fingern
+   bleibt). Die Seite scrollt normal, nie seitwärts. */
+html:has([data-app-shell]),
+html:has([data-app-shell]) body {
+  overscroll-behavior: none;
+  overflow-x: clip;
+  background: var(--bg);
+}
+[data-app-shell] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+/* Handy: Text in Feldern mindestens 16 px, sonst zoomt das iPhone beim
+   Antippen hinein; Knöpfe und Links lassen sich nicht versehentlich markieren. */
+@media (max-width: 39.999rem), (pointer: coarse) {
+  [data-app-shell] input,
+  [data-app-shell] select,
+  [data-app-shell] textarea {
+    font-size: 16px;
+  }
+  [data-app-shell] button,
+  [data-app-shell] a {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+}
+/* Rückmeldung beim Antippen: Knöpfe, Links und Reiter werden beim Drücken sofort etwas blasser,
+   wie in nativen Apps. In @layer base, damit eigene active:-Stile Vorrang haben. */
+@layer base {
+  :where([data-app-shell]) :where(button, a[href], [role="tab"], summary) {
+    transition: opacity var(--dur-fast) var(--ease);
+  }
+  :where([data-app-shell]) :where(button:not(:disabled), a[href], [role="tab"], summary):active {
+    opacity: 0.6;
+    transition-duration: 0ms;
+  }
+}
+/* Neuer Inhalt (Bereichswechsel): blendet ein und kommt 8 px hoch. */
+@keyframes enter {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+}
+@utility animate-enter {
+  animation: enter var(--dur-slow) var(--ease-out) backwards;
+}
+
+/* Umbruchpunkte: 640 · 960 · 1280 px. */
+@theme {
+  --breakpoint-lg: 60rem;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fill: var(--fill);
+  --color-fill-2: var(--fill-2);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-tile: var(--tile);
+  --color-tile-text: var(--tile-text);
+  --color-tile-sub: var(--tile-sub);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-cat-1: var(--cat-1);
+  --color-cat-2: var(--cat-2);
+  --color-cat-3: var(--cat-3);
+  --color-cat-4: var(--cat-4);
+
+  --font-sans: var(--font-geist), -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, Menlo, Consolas, monospace;
+
+  --text-display: var(--fs-display);
+  --text-h1: var(--fs-h1);
+  --text-h2: var(--fs-h2);
+  --text-h3: var(--fs-h3);
+  --text-body: var(--fs-body);
+  --text-control: var(--fs-control);
+  --text-small: var(--fs-small);
+  --text-caption: var(--fs-caption);
+
+  --radius-btn: var(--r-btn);
+  --radius-control: var(--r-control);
+  --radius-card: var(--r-card);
+  --radius-tile: var(--r-tile);
+  --radius-pop: var(--r-pop);
+
+  --shadow-card: var(--shadow-1);
+  --shadow-hover: var(--shadow-2);
+  --shadow-pop: var(--shadow-3);
+}
+
+/* Grundregeln in der Base-Ebene, damit Tailwind-Klassen sie überschreiben können. */
+@layer base {
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-size: var(--fs-body);
+    line-height: 1.5;
+    /* Als App (viewport-fit=cover) im Querformat nicht unter Notch/Kamera. */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--ring);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--fill-2) transparent;
+  }
+
+  /* Platzhalter beim Laden erst nach 300 ms zeigen, sonst flackert er bei schnellen Wechseln. */
+  .skeleton-delay {
+    animation: skeleton-in var(--dur) var(--ease-out) 300ms both;
+  }
+
+  @keyframes skeleton-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 1ms !important;
+      transition-duration: 1ms !important;
+    }
+  }
+}
+

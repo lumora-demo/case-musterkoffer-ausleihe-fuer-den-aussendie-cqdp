@@ -1,7 +1,10 @@
-# Vorlage IT: Interne Anwendungen (IT)
+# Musterkoffer-Ausleihe für den Außendienst
 
-Vorlage für neue Apps der **Lumora Systeme AG** (erfundene Firma, nur Testdaten) im Set „Interne Anwendungen (IT)“.
-Kompass legt für jeden Case aus dieser Vorlage ein eigenes Repository an und übergibt den Bauauftrag als Issue an Claude.
+App der **Lumora Systeme AG** (erfundene Firma, nur Testdaten) im Set „Interne Anwendungen (IT)“: Wer sieht auf einen Blick, welcher Musterkoffer wo ist, reserviert ihn und meldet fehlende oder veraltete Muster mit einem Tipp.
+
+- **Seiten:** Übersicht (`/`), Koffer (`/koffer`, Detail `/koffer/[id]`), Reservierungen, Meldungen
+- **Fachlogik:** `src/lib/ausleihe.ts` (Regeln), `src/lib/ausleihe-store.ts` (Zustand der Vorschau im Browser)
+- **API (Zielbild):** `backend/app/main.py`, gleiche Felder und Regeln
 
 - **Für wen:** Werkzeuge für Mitarbeitende in Vertrieb, Service, Einkauf, Produktion und Verwaltung
 - **Frontend:** React (Next.js) + TypeScript + Tailwind, statisch gebaut

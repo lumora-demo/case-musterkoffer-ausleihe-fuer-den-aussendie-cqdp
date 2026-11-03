@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { de } from "@/content/de";
-import { NAV } from "@/content/nav";
+import { NAV, ZEICHEN } from "@/content/nav";
+import { RueckmeldungsBereich } from "./toast";
 import { cn } from "@/lib/utils";
 
 // Rahmen jeder Lumora-App (STYLEGUIDE.md, Abschnitt 10):
@@ -79,12 +80,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </Link>
         ))}
       </nav>
+
+      <RueckmeldungsBereich />
     </div>
   );
 }
 
 // Zeichen der App: Linien-Symbol in der Kernfarbe (klein, ohne Fläche)
 function Zeichen() {
-  const Icon = NAV[0].icon;
-  return <Icon className="size-[22px] shrink-0 text-accent" strokeWidth={1.75} aria-hidden />;
+  return <ZEICHEN className="size-[22px] shrink-0 text-accent" strokeWidth={1.75} aria-hidden />;
 }
